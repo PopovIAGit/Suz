@@ -1,0 +1,282 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta charset="utf-8">
+<style>
+.h1{
+font: normal normal 22px/39px Arial, Helvetica, sans-serif;
+}
+
+.p{
+font: normal 14px Arial, Helvetica, sans-serif;
+}
+
+.input{
+display: inline-block;
+box-sizing: content-box;
+padding: 5px 10px;
+border: 1px solid #b7b7b7;
+border-radius: 4px;
+font: normal 14px Arial, Helvetica, sans-serif;
+text-overflow: clip;
+background: rgba(252,252,252,1);
+text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.td{
+padding: 10px;
+padding-right: 20px;
+font: normal 14px Arial, Helvetica, sans-serif;
+}
+
+.button, .test, .del{
+font: normal normal 14px/14px Arial, Helvetica, sans-serif;
+
+border-radius: 4px;
+color: #fff;
+padding: 6px 12px;
+text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5);
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.button-save{
+background-color: #0088cc;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3384cc), to(#0048cc));
+background-repeat: repeat-x;
+border-color: #0088cc #0088cc #0088cc;
+border-color: rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+.button-test{
+background-color:#359238;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5faf1d), to(#359238));
+background-repeat: repeat-x;
+border-color: #359238 #1cb2b2 #000000;
+border-color: rgba(0, 255, 154, 0.1) rgba(0, 255, 154, 0.1) rgba(0, 255, 154, 0.25);
+}
+
+.button-del{
+background-color:#ce140a;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f44848), to(#ce140a));
+background-repeat: repeat-x;
+border-color: #ce140a #B22222 #000000;
+border-color: rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.25);
+}
+
+.menu{
+box-sizing: content-box;
+width: 237px;
+height: 36px;
+cursor: pointer;  
+border: 1px solid #dddddd;
+font: normal 14px/37px Arial, Helvetica, sans-serif;
+text-indent: 12px;
+text-overflow: clip;
+white-space: nowrap;
+color: #0088cc;
+background: #ffffff;
+text-align: left;
+padding: 0px;
+margin: -6px 10px -8px 0px;
+}
+
+.menu-current{
+background: #0088cc;
+border: 1px solid #dddddd;
+color: #ffffff;
+}  
+  
+.menu-top{
+border-radius: 4px 4px 0 0;
+margin: 0px 10px -8px 0px;
+}
+  
+.layout{
+width: 100%;
+margin: 0;
+heigt: 100%;
+}
+
+.sidebar, .content{
+position: absolute;
+}
+
+.sidebar{ 
+top: 9px;
+left: 10px;
+}
+
+.content{
+top: 9px;
+left: 274px;
+width: 717px;
+}
+hr{
+border: none;
+background-color: rgb(229, 229, 229);
+color: rgb(49, 151, 116);
+height: 1px;
+}
+</style><title>Управление</title>
+</head>
+
+<body>
+<div class="layout">
+	<div class="sidebar">	
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="menu menu-top menu-current" name="main_config_page">Управление</button>
+		</form>	
+		<form method="get" action="/web2.cgi"> 
+			<button type="submit" class="menu" name="eth_page">Ethernet</button>
+		</form>	
+		<form method="get" action="/web3.cgi"> 
+			<button type="submit" class="menu" name="calib_page">Калибровка</button>
+		</form>			
+	</div>
+	<div class="content">		
+<hr>
+
+<p class="h1">Текущие настройки</p>
+<form name = "border_param" method = "get" action = "/web1.cgi">
+<table rules="none" width="100%">										
+	<tbody>
+	<tr>
+		<td align="right" class="td">	Статическое сопротивление замкнутых контактов геркона, мОм<br>	
+										Статическое сопротивление разомкнутых контактов геркона, Ом<br>	
+										Дисперсия сопротивление контактов геркона, мОм<br>
+										Сопротивление изоляции, МОм<br>										
+										Магнитное поле, мТл<br>
+										Ток опроса, мА<br>
+										Частота следования тестовых импульсов, Гц<br>
+										Ток катушки, мкА<br>										
+										Счетчик тестов геркона<br>
+										Счетчик срабатывания геркона<br>
+										Версия программного обеспечения
+		</td>
+		<td align="left" class="td"><output type="text"><pre class="p"><!--#t--> </pre></td>							
+	</tr>						
+	</tbody>
+</table>
+</form>
+
+<hr>
+<p class="h1">Выбрать ток опроса</p>
+<form name = "set_param" method = "get" action = "/web1.cgi">
+<table rules="none" width="100%">
+	<tbody>		
+		<tr>
+		<td class="td" align="left" width="20%">Ток:</td>
+			<td><p><select id="soflow" name="rscurr" width="30%">
+			<option disabled>Выбрать</option>
+			<option value="1" name="parity">1 мА</option>											
+			<option value="50" name="parity">50 мА</option>
+			<option value="500" name="parity">500 мА</option>						
+		</select></p>
+			</td>
+		<td align="left" width="50%"><button class="button button-save" type="submit" value="Test" name="s_rscurr">Установить</button></td>
+	</tr>	
+	</tbody>			
+</tbody>
+</table>
+</form>
+
+<hr>
+<p class="h1">Установить частоту следования тестовых импульсов</p>
+<form name="write_border" method="get" action="/web1.cgi">
+<table rules="none" width="100%">
+<tbody>
+	<tr>
+		<td  class="td" align="left">Частота, Гц:</td>
+		<td  align="left" > <input name="freq" size="16" maxlength="16" class="input" value = "50"> </td>
+		<td><button type="submit"  name="sfreq" align="center" class="button button-save">Установить</button></td>					
+	</tr>
+</tbody>
+</table>
+<br>
+<p class="p">Диапазон задания частот следования тестовых импульсов 1...10 кГц</p>
+</form>	
+
+<hr>
+<p class="h1">Установить ток катушки</p>
+<form name="write_border" method="get" action="/web1.cgi">
+<table rules="none" width="100%">
+<tbody>
+	<tr>
+		<td  class="td" align="left">Ток, мкА:</td>
+		<td  align="left" > <input name="coilcurr" size="16" maxlength="16" class="input" value = "5000"> </td>
+		<td><button type="submit"  name="s_coilcurr" align="center" class="button button-save">Установить</button></td>					
+	</tr>
+</tbody>
+</table>
+<br>
+<p class="p">Максимальный ток катушки 40000 мкА</p>
+</form>	
+
+
+<hr>
+<p class="h1">Тестирование</p>
+<table rules="none" width="100%">
+<tbody>
+	<tr>
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="single_tststart">Запустить однократно</button> 
+		</form>
+		</td>
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="cyc_tststart">Запустить циклически</button> 
+		</form>
+		</td>
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="cyc_tststop">Выключить</button> 
+		</form>
+		</td>				
+	</tr>	
+	<tr>
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="iso_tststart">Тестирование изоляции</button> 
+		</form>
+		</td>		
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="coilon">Включить геркон постоянно</button> 
+		</form>
+		</td>			
+	</tr>	
+	<tr>
+		<td>
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="button button-save" name="mag_tststart">Тестирование поплавка</button> 
+		</form>
+		</td>		
+	</tr>			
+	</tr>
+</tbody>
+</table>
+<p class="p">Для автокалибровки замкните измерительные щупы, подключаемые к геркону, между собой</p>
+
+<hr>
+
+
+<p class="h1">Данные</p>
+<table rules="none" width="100%">
+<tbody>
+	<tr>
+	<form method="get" action="/web1.cgi"> 
+		<button type="submit" class="button button-save" name="rd_data">Считать данные</button> 
+	</form>
+	</tr>	
+</tbody>
+</table>
+
+
+</div>
+</div>
+</body>
+</html>

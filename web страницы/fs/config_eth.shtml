@@ -1,0 +1,246 @@
+﻿ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta charset="utf-8">
+<style>
+.h1{
+font: normal normal 22px/39px Arial, Helvetica, sans-serif;
+}
+
+.p{
+font: normal 14px Arial, Helvetica, sans-serif;
+}
+
+.input{
+display: inline-block;
+box-sizing: content-box;
+padding: 5px 10px;
+border: 1px solid #b7b7b7;
+border-radius: 4px;
+font: normal 14px Arial, Helvetica, sans-serif;
+text-overflow: clip;
+background: rgba(252,252,252,1);
+text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.td{
+padding: 10px;
+padding-right: 20px;
+font: normal 14px Arial, Helvetica, sans-serif;
+}
+
+.button, .test, .del{
+font: normal normal 14px/14px Arial, Helvetica, sans-serif;
+
+border-radius: 4px;
+color: #fff;
+padding: 6px 12px;
+text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5);
+color: #ffffff;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.button-save{
+background-color: #0088cc;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3384cc), to(#0048cc));
+background-repeat: repeat-x;
+border-color: #0088cc #0088cc #0088cc;
+border-color: rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+.button-test{
+background-color:#359238;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5faf1d), to(#359238));
+background-repeat: repeat-x;
+border-color: #359238 #1cb2b2 #000000;
+border-color: rgba(0, 255, 154, 0.1) rgba(0, 255, 154, 0.1) rgba(0, 255, 154, 0.25);
+}
+
+.button-del{
+background-color:#ce140a;
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f44848), to(#ce140a));
+background-repeat: repeat-x;
+border-color: #ce140a #B22222 #000000;
+border-color: rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.1) rgba(0, 72, 255, 0.25);
+}
+
+.menu{
+box-sizing: content-box;
+width: 237px;
+height: 36px;
+cursor: pointer;  
+border: 1px solid #dddddd;
+font: normal 14px/37px Arial, Helvetica, sans-serif;
+text-indent: 12px;
+text-overflow: clip;
+white-space: nowrap;
+color: #0088cc;
+background: #ffffff;
+text-align: left;
+padding: 0px;
+margin: -6px 10px -8px 0px;
+}
+
+.menu-current{
+background: #0088cc;
+border: 1px solid #dddddd;
+color: #ffffff;
+}  
+  
+.menu-top{
+border-radius: 4px 4px 0 0;
+margin: 0px 10px -8px 0px;
+}
+  
+.layout{
+width: 100%;
+margin: 0;
+heigt: 100%;
+}
+
+.sidebar, .content{
+position: absolute;
+}
+
+.sidebar{ 
+top: 9px;
+left: 10px;
+}
+
+.content{
+top: 9px;
+left: 274px;
+width: 717px;
+}
+hr{
+border: none;
+background-color: rgb(229, 229, 229);
+color: rgb(49, 151, 116);
+height: 1px;
+}
+</style><title>Ethernet parameters</title>
+</head>
+
+<body>
+<div class="layout">
+	<div class="sidebar">	
+		<form method="get" action="/web1.cgi"> 
+			<button type="submit" class="menu" name="main_config_page">Управление</button>
+		</form>	
+		<form method="get" action="/web2.cgi"> 
+			<button type="submit" class="menu menu-top menu-current" name="eth_page">Ethernet</button>
+		</form>	
+		<form method="get" action="/web3.cgi"> 
+			<button type="submit" class="menu" name="calib_page">Калибровка</button>
+		</form>			
+	</div>
+	<div class="content">
+<hr>
+
+<p class="h1"> Текущие настройки Ethernet</p>
+<form name = "read_param_eth" method = "get" action = "/web2.cgi">
+<table rules="none" width="100%">										
+	<tbody>
+	<tr>
+		<td align="right" class="td">	IP адрес<br>
+										Шлюз<br>
+										Маска подсети<br>
+										MAC адрес										
+		</td>									
+		<td align="left" class="td"><output type="text"> <pre class="p"><!--#t--> </pre></td>							
+	</tr>						
+	</tbody>
+</table>
+</form>
+
+
+<hr>
+<p class="h1"> Настройка параметров Ethernet</p>
+<form name = "set_param" method = "get" action = "/web2.cgi">
+<p class="p"> По умолчанию используется MAC адрес, установленный на заводе</p>
+<table rules="none" width="100%">
+<tbody>	
+	<tr>
+		<td class="td" align="right" width="30%">MAC адрес:</td>		
+		<td align="left"><input name="macaddr0" size="1" maxlength="3" type="text" value = "16" class="input"></td>
+		<td align="left"><input name="macaddr1" size="1" maxlength="3" type="text" value = "195" class="input"></td>
+		<td align="left"><input name="macaddr2" size="1" maxlength="3" type="text" value = "123" class="input"></td>
+		<td align="left"><input name="macaddr3" size="1" maxlength="3" type="text" value = "16" class="input"></td>					
+		<td align="left"><input name="macaddr4" size="1" maxlength="3" type="text" value = "16" class="input"></td>					
+		<td align="left"><input name="macaddr5" size="1" maxlength="3" type="text" value = "16" class="input"></td>	
+	</tr>
+	<tr>
+		<td width="30%"></td>
+		<td align="left" colspan="6"><button class="button button-save" type="submit" value="Test" name="eth_smac">Сохранить</button></td>
+	</tr>
+</tbody>
+</table>
+</form>
+<br>
+
+<form name = "set_param" method = "get" action = "/web2.cgi">
+<table  rules="none" width="100%" >
+<tbody>
+	<tr>
+		<td class="td" align="right">IP адрес:</td>		
+		<td align="left"><input name="dev_ip_ad0" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="dev_ip_ad1" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="dev_ip_ad2" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="dev_ip_ad3" size="3" maxlength="3" type="text" class="input"></td>	
+	</tr>
+	<tr>
+		<td width="30%"></td>
+		<td align="left" colspan="4"><button class="button button-save" type="submit" value="Test" name="eth_sip">Сохранить</button></td>
+	</tr>
+	</tbody>
+</table>		
+</form>
+
+<br>
+<form name = "set_param" method = "get" action = "/web2.cgi">
+<table  rules="none" width="100%" >
+<tbody>
+	<tr>
+		<td class="td" align="right">Шлюз:</td>		
+		<td align="left"><input name="gw_ip_ad0" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="gw_ip_ad1" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="gw_ip_ad2" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="gw_ip_ad3" size="3" maxlength="3" type="text" class="input"></td>	
+	</tr>
+	<tr>
+		<td width="30%"></td>
+		<td align="left" colspan="4"><button class="button button-save" type="submit" value="Test" name="eth_sgw">Сохранить</button></td>
+	</tr>
+	</tbody>
+</table>		
+</form>
+
+<br>
+
+<br>
+<form name = "set_param" method = "get" action = "/web2.cgi">
+<table  rules="none" width="100%" >
+<tbody>
+	<tr>
+		<td class="td" align="right">Маска подсети:</td>		
+		<td align="left"><input name="mk_ip_ad0" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="mk_ip_ad1" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="mk_ip_ad2" size="3" maxlength="3" type="text" class="input"></td>
+		<td align="left"><input name="mk_ip_ad3" size="3" maxlength="3" type="text" class="input"></td>	
+	</tr>
+	<tr>
+		<td width="30%"></td>
+		<td align="left" colspan="4"><button class="button button-save" type="submit" value="Test" name="eth_smk">Сохранить</button></td>
+	</tr>
+	</tbody>
+</table>		
+</form>
+
+<br>
+
+</div>
+</div>
+</body>
+</html>
